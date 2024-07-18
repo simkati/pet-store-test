@@ -11,10 +11,10 @@ import java.util.TreeMap;
 
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
-public class petListTest extends Common {
+public class PetListTest extends Common {
 
     @Test(enabled = true,groups = {SMOKE},description ="description")
-    public void Test1(){
+    public void availablePetList(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
 
@@ -23,14 +23,23 @@ public class petListTest extends Common {
     }
 
     @Test(enabled = true,groups = {SMOKE},description ="description")
-    public void Test2(){
+    public void soldPetList(){
         Map<String, String> queryParams = new TreeMap<>();
-        queryParams.put("status","available");
+        queryParams.put("status","sold");
         Map<String, String> headers = new TreeMap<>();
         headers.put("Mandatoyheader","BFG");
 
         Response  response = getUrl(findByStatus,headers,queryParams);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
 
+    }
+
+    @Test(enabled = true,groups = {SMOKE},description ="description")
+    public void invalidStatus(){
+        Map<String, String> queryParams = new TreeMap<>();
+        queryParams.put("status","invalid");
+
+        Response  response = getUrl(findByStatus, queryParams);
+        Assert.assertEquals(response.getStatusCode(),400,"Invalid response code");
     }
 }

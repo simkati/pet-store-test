@@ -24,6 +24,23 @@ public class Common extends Endpoints {
                 .extract().response();
 
     }
+    public Response getUrl(String endpoint, String pathParamKey, String pathParamValue){
+
+
+        return given()
+                .relaxedHTTPSValidation()
+                .pathParam(pathParamKey, pathParamValue)
+                .and()
+                .log().everything()
+                .when()
+                .get(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+
+    }
+
     public Response getUrl(String endpoint, Map<String, String> queryParam ){
 
 
@@ -77,7 +94,27 @@ public class Common extends Endpoints {
 
     }
 
+    public Response postUrl(String endpoint,String pathParamKey, String pathParamValue){
+
+
+        return given()
+                .relaxedHTTPSValidation()
+                .pathParam(pathParamKey, pathParamValue)
+                .body("")
+                .contentType("image/jpeg; charset=UTF-8")
+                .and()
+                .log().everything()
+                .when()
+                .post(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+
+    }
+
     //----------------------------------PUT----------------------------------
+    
 
     //----------------------------------DELETE----------------------------------
 }
