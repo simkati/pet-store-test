@@ -2,6 +2,9 @@ package com.example.sandbox;
 
 import io.restassured.response.Response;
 
+import java.net.URL;
+import java.io.InputStream;
+import java.net.URLConnection;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -100,8 +103,6 @@ public class Common extends Endpoints {
         return given()
                 .relaxedHTTPSValidation()
                 .pathParam(pathParamKey, pathParamValue)
-                .body("")
-                .contentType("image/jpeg; charset=UTF-8")
                 .and()
                 .log().everything()
                 .when()
@@ -110,6 +111,34 @@ public class Common extends Endpoints {
                 .log()
                 .all()
                 .extract().response();
+
+    }
+
+    public Response postUrl(String endpoint,String pathParamKey, String pathParamValue, String imagePath){
+
+        InputStream inputStream = null;
+
+        try {
+            URL imageUrl = new URL(imagePath);
+            URLConnection connection = imageUrl.openConnection();
+            inputStream = connection.getInputStream();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+       
+        return given()
+                .relaxedHTTPSValidation()
+                .pathParam(pathParamKey, pathParamValue)
+                .multiPart("file", "deep-sea-anglerfish1.jpg", inputStream) 
+                .and()
+                .log().everything()
+                .when()
+                .post(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+        
 
     }
 
