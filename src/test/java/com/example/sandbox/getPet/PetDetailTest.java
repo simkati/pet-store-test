@@ -8,11 +8,11 @@ import org.testng.annotations.Test;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.example.sandbox.util.constans.Tags.SMOKE;
+import static com.example.sandbox.util.constans.Tags.REGRESSION;;
 
 public class PetDetailTest extends Common {
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void getAvailablePet(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
@@ -26,7 +26,7 @@ public class PetDetailTest extends Common {
         Assert.assertEquals(response2.getStatusCode(),200,"Invalid response code"); 
     }
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void getInvalidIdPet(){
         
         String id = "invalid";
@@ -35,7 +35,7 @@ public class PetDetailTest extends Common {
         Assert.assertEquals(response.getStatusCode(),400,"Invalid response code"); 
     }
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void petNotFound(){
         
         String id = "123456789";

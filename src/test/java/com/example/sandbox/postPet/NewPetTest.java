@@ -7,11 +7,11 @@ import com.example.sandbox.Common;
 
 import io.restassured.response.Response;
 
-import static com.example.sandbox.util.constans.Tags.SMOKE;
+import static com.example.sandbox.util.constans.Tags.REGRESSION;;
 
 public class NewPetTest extends Common{
     
-     @Test(enabled = true,groups = {SMOKE},description ="description")
+     @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void createPet(){
         
         String body = "{\"id\": 32, \"category\": {\"id\": 0, \"name\": \"dog\"}, \"name\": \"doggie\", \"photoUrls\": [\"string\"], \"tags\": [{\"id\": 0, \"name\": \"string\"}], \"status\": \"available\" }";
@@ -21,7 +21,7 @@ public class NewPetTest extends Common{
 
     }
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void invalidIdPet(){
         
         String body = "{\"id\": \"10\", \"category\": {\"id\": 0, \"name\": \"dog\"}, \"name\": \"\", \"photoUrls\": [\"string\"], \"tags\": [{\"id\": 0, \"name\": \"string\"}], \"status\": \"available\" }";

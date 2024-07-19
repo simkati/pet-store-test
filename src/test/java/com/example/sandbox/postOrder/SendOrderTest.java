@@ -7,6 +7,7 @@ import com.example.sandbox.Common;
 
 import io.restassured.response.Response;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
+import static com.example.sandbox.util.constans.Tags.REGRESSION;;
 
 public class SendOrderTest extends Common{
      
@@ -21,7 +22,7 @@ public class SendOrderTest extends Common{
 
     }
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
         
     public void invalidOrder(){
       

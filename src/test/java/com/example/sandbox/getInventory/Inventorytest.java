@@ -1,5 +1,5 @@
 package com.example.sandbox.getInventory;
-import static com.example.sandbox.util.constans.Tags.SMOKE;
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,7 +10,7 @@ import io.restassured.response.Response;
 
 public class Inventorytest extends Common  {
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = true,groups = {REGRESSION},description ="description")
     public void getInventory(){
         
         Response  response = getUrl(inventory);
